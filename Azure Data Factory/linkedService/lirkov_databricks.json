@@ -1,0 +1,13 @@
+{
+	"name": "lirkov_databricks",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureDatabricks",
+		"typeProperties": {
+			"domain": "https://adb-8552071745430960.0.azuredatabricks.net",
+			"existingClusterId": "1026-042944-a63fqu7g",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDREQTNFODU5LURERUYtNEE1Mi1BODJCLTQ4QTRGMzM4QjA2NV9jNTc2YjEzZC02YjIxLTRlZjUtYjIyMy1lY2Y3NDllM2Q2ZTUiDQp9"
+		}
+	}
+}
