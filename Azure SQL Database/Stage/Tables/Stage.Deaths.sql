@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [Stage].[Deaths]
 (
-	[Key] VARCHAR(14) NOT NULL PRIMARY KEY,
+	[Key] NVARCHAR(100) NOT NULL PRIMARY KEY,
 	[Province/State] VARCHAR(50) NULL,
 	[Country/Region] VARCHAR(50) NULL,
 	[Latitude] DECIMAL(11,8) NULL,
