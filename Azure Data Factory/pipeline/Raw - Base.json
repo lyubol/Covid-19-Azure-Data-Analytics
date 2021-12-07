@@ -1,0 +1,48 @@
+{
+	"name": "Raw - Base",
+	"properties": {
+		"activities": [
+			{
+				"name": "Transform - Raw to Base - Covid19_Cases",
+				"type": "DatabricksNotebook",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/lirkov/Covid-19/Transform - Raw to Base - Covid19_Cases"
+				},
+				"linkedServiceName": {
+					"referenceName": "lirkov_databricks",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Transform - Raw to Base - Covid19_Deaths",
+				"type": "DatabricksNotebook",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/lirkov/Covid-19/Transform - Raw to Base - Covid19_Deaths"
+				},
+				"linkedServiceName": {
+					"referenceName": "lirkov_databricks",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"annotations": []
+	}
+}

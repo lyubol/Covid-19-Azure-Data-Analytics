@@ -5,6 +5,9 @@
 			"referenceName": "Http_Covid19_Cases",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "Http"
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {

@@ -1,0 +1,78 @@
+{
+	"name": "Stage_Deaths",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "lirkovdb",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Warehouse"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Key",
+				"type": "varchar"
+			},
+			{
+				"name": "Province/State",
+				"type": "varchar"
+			},
+			{
+				"name": "Country/Region",
+				"type": "varchar"
+			},
+			{
+				"name": "Latitude",
+				"type": "decimal",
+				"precision": 11,
+				"scale": 8
+			},
+			{
+				"name": "Longitude",
+				"type": "decimal",
+				"precision": 11,
+				"scale": 8
+			},
+			{
+				"name": "Date",
+				"type": "date"
+			},
+			{
+				"name": "Value",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "CountryCode",
+				"type": "char"
+			},
+			{
+				"name": "RegionCode",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "SubRegionCode",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "IntermediateRegionCode",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "LoadDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "Stage",
+			"table": "Deaths"
+		}
+	}
+}

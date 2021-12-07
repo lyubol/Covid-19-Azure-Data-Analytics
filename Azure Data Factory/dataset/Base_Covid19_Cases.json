@@ -1,0 +1,68 @@
+{
+	"name": "Base_Covid19_Cases",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "adlslirkov",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Base"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "base/Covid19_Cases",
+				"fileSystem": "covid"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "Key",
+				"type": "UTF8"
+			},
+			{
+				"name": "Province/State",
+				"type": "UTF8"
+			},
+			{
+				"name": "Country/Region",
+				"type": "UTF8"
+			},
+			{
+				"name": "Lat",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "Long",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "Date",
+				"type": "DATE"
+			},
+			{
+				"name": "Value",
+				"type": "INT32"
+			},
+			{
+				"name": "CountryCode",
+				"type": "UTF8"
+			},
+			{
+				"name": "RegionCode",
+				"type": "INT32"
+			},
+			{
+				"name": "SubRegionCode",
+				"type": "INT32"
+			},
+			{
+				"name": "IntermediateRegionCode",
+				"type": "INT32"
+			}
+		]
+	}
+}
