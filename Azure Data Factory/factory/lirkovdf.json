@@ -1,0 +1,9 @@
+{
+	"name": "lirkovdf",
+	"location": "westus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "b2f1e44c-4fb1-489e-abf8-34f10918af44",
+		"tenantId": "6771b25a-f4d8-4f9f-9fcc-e7468a5cdc46"
+	}
+}

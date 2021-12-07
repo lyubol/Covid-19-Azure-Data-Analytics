@@ -1,0 +1,25 @@
+{
+	"name": "Raw_Covid19_Deaths",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "adlslirkov",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "Raw_Covid19_Deaths.csv",
+				"folderPath": "raw",
+				"fileSystem": "covid"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
