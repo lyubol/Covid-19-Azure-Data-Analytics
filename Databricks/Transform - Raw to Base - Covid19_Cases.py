@@ -7,7 +7,7 @@ from pyspark.sql.types import (StructType,
                                DoubleType, 
                                DateType)
 
-from pyspark.sql.functions import (concat_ws, coalesce, max)
+from pyspark.sql.functions import (concat, coalesce, max, sha2)
 
 from pyspark.sql.utils import AnalysisException
 
@@ -70,7 +70,21 @@ display(cases_raw_df)
 # COMMAND ----------
 
 # DBTITLE 1,Create 'Key' column
-cases_raw_df = cases_raw_df.withColumn('Key', concat_ws('-', cases_raw_df['CountryCode'], cases_raw_df['Date'].cast('String'))) 
+#cases_raw_df = cases_raw_df.withColumn('Key', concat_ws('-', cases_raw_df['CountryCode'], cases_raw_df['RegionCode'], cases_raw_df['Date'].cast('String'))) 
+
+cases_raw_df = (cases_raw_df.withColumn('Key', sha2(concat(cases_raw_df['Province/State'], cases_raw_df['Country/Region'], cases_raw_df['Date']), 256))
+                            .select('Key', 
+                                    'Province/State', 
+                                    'Country/Region', 
+                                    'Lat', 
+                                    'Long', 
+                                    'Date', 
+                                    'Value', 
+                                    'CountryCode', 
+                                    'RegionCode', 
+                                    'SubRegionCode', 
+                                    'IntermediateRegionCode'))
+
 
 display(cases_raw_df)
 
@@ -78,11 +92,6 @@ display(cases_raw_df)
 
 # DBTITLE 1,Remove first row (sub-header)
 cases_raw_df = cases_raw_df.filter(cases_raw_df.Key != '#country+code')
-
-# COMMAND ----------
-
-# DBTITLE 1,Reorder columns
-cases_raw_df = cases_raw_df.select('Key', 'Province/State', 'Country/Region', 'Lat', 'Long', 'Date', 'Value', 'CountryCode', 'RegionCode', 'SubRegionCode', 'IntermediateRegionCode')
 
 # COMMAND ----------
 
@@ -95,6 +104,12 @@ append_df = cases_raw_df.exceptAll(base_df)
 
 # DBTITLE 1,Count of rows to be appended
 output = append_df.count()
+
+# COMMAND ----------
+
+from pyspark.sql.functions import length, min
+
+cases_raw_df.select(max(length(cases_raw_df['lat']))).show()
 
 # COMMAND ----------
 
