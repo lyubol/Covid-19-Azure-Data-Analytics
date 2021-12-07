@@ -13,6 +13,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
+				"fileName": "part-00000-tid-5448146079179853426-dff181cd-4f97-4ca5-8f5e-201d93c193f2-58-1-c000.snappy.parquet",
 				"folderPath": "base/Covid19_Cases",
 				"fileSystem": "covid"
 			},
