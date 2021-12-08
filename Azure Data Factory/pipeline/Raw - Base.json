@@ -67,8 +67,8 @@
 						"type": "DatasetReference"
 					},
 					"fieldList": [
-						"itemName",
-						"itemType"
+						"childItems",
+						"lastModified"
 					],
 					"storeSettings": {
 						"type": "AzureBlobFSReadSettings",
@@ -102,7 +102,10 @@
 							"type": "AzureBlobFSReadSettings",
 							"recursive": true,
 							"wildcardFolderPath": "base/Covid19_Cases",
-							"wildcardFileName": "part-00000-tid-8353568845824420773-27900999-bc35-46c9-97df-eb111d9b515a-107-1-c000.snappy.parquet",
+							"wildcardFileName": {
+								"value": "@activity('Get Metadata1').output.itemName",
+								"type": "Expression"
+							},
 							"enablePartitionDiscovery": false
 						}
 					},

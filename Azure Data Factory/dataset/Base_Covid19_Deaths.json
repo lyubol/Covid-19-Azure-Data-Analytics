@@ -13,8 +13,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "part-00000-tid-4972989635741729334-c16a26a7-290a-45a3-a801-6d910add57fd-43-1-c000.snappy.parquet",
-				"folderPath": "base/Covid19_Deaths",
+				"fileName": "Deaths_export.parquet",
+				"folderPath": "base/Deaths",
 				"fileSystem": "covid"
 			},
 			"compressionCodec": "snappy"
