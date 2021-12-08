@@ -60,10 +60,19 @@
     <Folder Include="Security\Schemas" />
     <Folder Include="Stage" />
     <Folder Include="Stage\Tables" />
+    <Folder Include="Project" />
+    <Folder Include="Project\Scripts" />
+    <Folder Include="Dim" />
+    <Folder Include="Dim\Tables" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Security\Schemas\Stage.sql" />
     <Build Include="Stage\Tables\Stage.Cases.sql" />
     <Build Include="Stage\Tables\Stage.Deaths.sql" />
+    <Build Include="Security\Schemas\Dim.sql" />
+    <Build Include="Dim\Tables\Dim.Country.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Project\Scripts\Dim.Country.Populate.sql" />
   </ItemGroup>
 </Project>
