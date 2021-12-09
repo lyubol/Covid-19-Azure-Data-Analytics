@@ -87,7 +87,7 @@
     <Build Include="Security\Schemas\Dimension.sql" />
     <Build Include="Fact\Views\Fact.Cases.sql" />
     <Build Include="Fact\Views\Fact.Deaths.sql" />
-    <Build Include="Dimension\Views\Dimension.Country.sql" />
+    <Build Include="Dimension\Views\Dimension.CountryCode.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Project\Scripts\Dim.CountryCode.Populate.sql" />
