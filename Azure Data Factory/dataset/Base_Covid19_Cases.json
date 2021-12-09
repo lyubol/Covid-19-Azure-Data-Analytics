@@ -13,7 +13,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "Cases_export.parquet",
+				"fileName": "Fct.Cases_export.parquet",
 				"folderPath": "base/Cases",
 				"fileSystem": "covid"
 			},

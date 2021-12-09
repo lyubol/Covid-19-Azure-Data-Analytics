@@ -34,26 +34,14 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "Key",
+									"name": "CasesKey",
 									"type": "String",
 									"physicalType": "UTF8"
 								},
 								"sink": {
-									"name": "Key",
+									"name": "CasesKey",
 									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Province/State",
-									"type": "String",
-									"physicalType": "UTF8"
-								},
-								"sink": {
-									"name": "Province/State",
-									"type": "String",
-									"physicalType": "varchar"
+									"physicalType": "nvarchar"
 								}
 							},
 							{
@@ -66,34 +54,6 @@
 									"name": "Country/Region",
 									"type": "String",
 									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Lat",
-									"type": "Double",
-									"physicalType": "DOUBLE"
-								},
-								"sink": {
-									"name": "Latitude",
-									"type": "Decimal",
-									"physicalType": "decimal",
-									"scale": 8,
-									"precision": 11
-								}
-							},
-							{
-								"source": {
-									"name": "Long",
-									"type": "Double",
-									"physicalType": "DOUBLE"
-								},
-								"sink": {
-									"name": "Longitude",
-									"type": "Decimal",
-									"physicalType": "decimal",
-									"scale": 8,
-									"precision": 11
 								}
 							},
 							{
@@ -111,59 +71,11 @@
 							{
 								"source": {
 									"name": "Value",
-									"type": "Int32",
-									"physicalType": "INT32"
+									"type": "Int64",
+									"physicalType": "INT64"
 								},
 								"sink": {
 									"name": "Value",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "CountryCode",
-									"type": "String",
-									"physicalType": "UTF8"
-								},
-								"sink": {
-									"name": "CountryCode",
-									"type": "String",
-									"physicalType": "char"
-								}
-							},
-							{
-								"source": {
-									"name": "RegionCode",
-									"type": "Int32",
-									"physicalType": "INT32"
-								},
-								"sink": {
-									"name": "RegionCode",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "SubRegionCode",
-									"type": "Int32",
-									"physicalType": "INT32"
-								},
-								"sink": {
-									"name": "SubRegionCode",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "IntermediateRegionCode",
-									"type": "Int32",
-									"physicalType": "INT32"
-								},
-								"sink": {
-									"name": "IntermediateRegionCode",
 									"type": "Int32",
 									"physicalType": "int"
 								}
@@ -221,26 +133,14 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "Key",
+									"name": "DeathsKey",
 									"type": "String",
 									"physicalType": "UTF8"
 								},
 								"sink": {
-									"name": "Key",
+									"name": "DeathsKey",
 									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Province/State",
-									"type": "String",
-									"physicalType": "UTF8"
-								},
-								"sink": {
-									"name": "Province/State",
-									"type": "String",
-									"physicalType": "varchar"
+									"physicalType": "nvarchar"
 								}
 							},
 							{
@@ -253,34 +153,6 @@
 									"name": "Country/Region",
 									"type": "String",
 									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Lat",
-									"type": "Double",
-									"physicalType": "DOUBLE"
-								},
-								"sink": {
-									"name": "Latitude",
-									"type": "Decimal",
-									"physicalType": "decimal",
-									"scale": 8,
-									"precision": 11
-								}
-							},
-							{
-								"source": {
-									"name": "Long",
-									"type": "Double",
-									"physicalType": "DOUBLE"
-								},
-								"sink": {
-									"name": "Longitude",
-									"type": "Decimal",
-									"physicalType": "decimal",
-									"scale": 8,
-									"precision": 11
 								}
 							},
 							{
@@ -298,59 +170,11 @@
 							{
 								"source": {
 									"name": "Value",
-									"type": "Int32",
-									"physicalType": "INT32"
+									"type": "Int64",
+									"physicalType": "INT64"
 								},
 								"sink": {
 									"name": "Value",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "CountryCode",
-									"type": "String",
-									"physicalType": "UTF8"
-								},
-								"sink": {
-									"name": "CountryCode",
-									"type": "String",
-									"physicalType": "char"
-								}
-							},
-							{
-								"source": {
-									"name": "RegionCode",
-									"type": "Int32",
-									"physicalType": "INT32"
-								},
-								"sink": {
-									"name": "RegionCode",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "SubRegionCode",
-									"type": "Int32",
-									"physicalType": "INT32"
-								},
-								"sink": {
-									"name": "SubRegionCode",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "IntermediateRegionCode",
-									"type": "Int32",
-									"physicalType": "INT32"
-								},
-								"sink": {
-									"name": "IntermediateRegionCode",
 									"type": "Int32",
 									"physicalType": "int"
 								}
@@ -375,6 +199,60 @@
 						"type": "DatasetReference"
 					}
 				]
+			},
+			{
+				"name": "Execute_StageToFctCases",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Base - Stage_Cases",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[Stage].[StageToFctCases]"
+				},
+				"linkedServiceName": {
+					"referenceName": "lirkovdb",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Execute_StageToFctDeaths",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Base - Stage_Deaths",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[Stage].[StageToFctDeaths]"
+				},
+				"linkedServiceName": {
+					"referenceName": "lirkovdb",
+					"type": "LinkedServiceReference"
+				}
 			}
 		],
 		"annotations": []

@@ -13,7 +13,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "Deaths_export.parquet",
+				"fileName": "Fct.Deaths_export.parquet",
 				"folderPath": "base/Deaths",
 				"fileSystem": "covid"
 			},
