@@ -64,6 +64,9 @@
     <Folder Include="Project\Scripts" />
     <Folder Include="Dim" />
     <Folder Include="Dim\Tables" />
+    <Folder Include="Stage\Stored Procedures" />
+    <Folder Include="Fct" />
+    <Folder Include="Fct\Tables" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Security\Schemas\Stage.sql" />
@@ -71,6 +74,11 @@
     <Build Include="Stage\Tables\Stage.Deaths.sql" />
     <Build Include="Security\Schemas\Dim.sql" />
     <Build Include="Dim\Tables\Dim.Country.sql" />
+    <Build Include="Stage\Stored Procedures\Stage.StageToFctCases.sql" />
+    <Build Include="Stage\Stored Procedures\Stage.StageToFctDeaths.sql" />
+    <Build Include="Fct\Tables\Fct.Cases.sql" />
+    <Build Include="Fct\Tables\Fct.Deaths.sql" />
+    <Build Include="Security\Schemas\Fct.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Project\Scripts\Dim.Country.Populate.sql" />
