@@ -5,7 +5,7 @@ BEGIN
 
 	MERGE INTO [Fct].[Cases] AS TGT
 	USING 
-		[Stage].[StageToFctCases] AS SRC
+		[Stage].[Cases] AS SRC
 		ON TGT.[CasesKey] = SRC.[CasesKey]
 
 	WHEN MATCHED THEN

@@ -5,7 +5,7 @@ BEGIN
 
 	MERGE INTO [Fct].[Deaths] AS TGT
 	USING 
-		[Stage].[StageToFctDeaths] AS SRC
+		[Stage].[Deaths] AS SRC
 		ON TGT.[DeathsKey] = SRC.[DeathsKey]
 
 	WHEN MATCHED THEN
