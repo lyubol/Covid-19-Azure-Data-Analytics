@@ -1,5 +1,5 @@
-﻿PRINT 'Merging into [Dim].[Country] .... ';
---SET IDENTITY_INSERT [Dim].[Country] ON;
+﻿PRINT 'Merging into [Dim].[CountryCode] .... ';
+--SET IDENTITY_INSERT [Dim].[CountryCode] ON;
 
 WITH SRC AS
 (
@@ -209,7 +209,7 @@ WITH SRC AS
     )
 )
 
-MERGE INTO [Dim].[Country] AS TGT
+MERGE INTO [Dim].[CountryCode] AS TGT
 USING SRC
     ON TGT.[CountryCode] = SRC.[CountryCode]
 
@@ -244,4 +244,4 @@ WHEN NOT MATCHED BY SOURCE THEN
     DELETE;
 
 
---SET IDENTITY_INSERT [Dim].[Country] OFF;
+--SET IDENTITY_INSERT [Dim].[CountryCode] OFF;

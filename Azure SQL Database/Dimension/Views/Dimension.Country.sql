@@ -1,4 +1,4 @@
-﻿CREATE TABLE [Dim].[CountryCode]
+﻿CREATE TABLE [Dimension].[CountryCode]
 (
 	[CountryId] INT IDENTITY(1,1) PRIMARY KEY,
     [CountryCode] CHAR(3) NOT NULL, 

@@ -1,0 +1,129 @@
+{
+  "name": "SemanticModel",
+  "compatibilityLevel": 1500,
+  "model": {
+    "culture": "en-GB",
+    "dataSources": [
+      {
+        "type": "structured",
+        "name": "SQL/lirkovsrv database windows net;Covid19",
+        "connectionDetails": {
+          "protocol": "tds",
+          "address": {
+            "server": "lirkovsrv.database.windows.net",
+            "database": "Covid19"
+          },
+          "authentication": null,
+          "query": null
+        },
+        "options": {},
+        "credential": {
+          "AuthenticationKind": "UsernamePassword",
+          "Username": "lirkov",
+          "EncryptConnection": true
+        }
+      }
+    ],
+    "tables": [
+      {
+        "name": "Fact Cases",
+        "columns": [
+          {
+            "name": "CasesKey",
+            "dataType": "string",
+            "sourceColumn": "CasesKey"
+          },
+          {
+            "name": "Country/Region",
+            "dataType": "string",
+            "sourceColumn": "Country/Region"
+          },
+          {
+            "name": "Date",
+            "dataType": "dateTime",
+            "sourceColumn": "Date"
+          },
+          {
+            "name": "Value",
+            "dataType": "int64",
+            "sourceColumn": "Value"
+          },
+          {
+            "name": "UpdatedDate",
+            "dataType": "dateTime",
+            "sourceColumn": "UpdatedDate"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/lirkovsrv database windows net;Covid19\",",
+                "    Fact_Cases = Source{[Schema=\"Fact\",Item=\"Cases\"]}[Data]",
+                "in",
+                "    Fact_Cases"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Fact Deaths",
+        "columns": [
+          {
+            "name": "DeathsKey",
+            "dataType": "string",
+            "sourceColumn": "DeathsKey"
+          },
+          {
+            "name": "Country/Region",
+            "dataType": "string",
+            "sourceColumn": "Country/Region"
+          },
+          {
+            "name": "Date",
+            "dataType": "dateTime",
+            "sourceColumn": "Date"
+          },
+          {
+            "name": "Value",
+            "dataType": "int64",
+            "sourceColumn": "Value"
+          },
+          {
+            "name": "UpdatedDate",
+            "dataType": "dateTime",
+            "sourceColumn": "UpdatedDate"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/lirkovsrv database windows net;Covid19\",",
+                "    Fact_Deaths = Source{[Schema=\"Fact\",Item=\"Deaths\"]}[Data]",
+                "in",
+                "    Fact_Deaths"
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "600"
+      }
+    ]
+  },
+  "id": "SemanticModel"
+}
