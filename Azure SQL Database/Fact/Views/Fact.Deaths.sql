@@ -6,6 +6,7 @@ SELECT
 	[Country/Region],
 	[Date],
 	[Value],
-	[UpdatedDate]
+	[UpdatedDate],
+    ROW_NUMBER() OVER(ORDER BY [Country/Region] ASC, [Date] DESC) AS [OrderId]
 FROM 
 	[Fct].[Deaths]
