@@ -18,6 +18,8 @@
         },
         "credential": {
           "AuthenticationKind": "UsernamePassword",
+          "kind": "SQL",
+          "path": "lirkovsrv.database.windows.net;Covid19",
           "Username": "lirkov",
           "EncryptConnection": true
         }
@@ -53,11 +55,23 @@
             "sourceColumn": "UpdatedDate"
           },
           {
+            "name": "OrderId",
+            "dataType": "int64",
+            "sourceColumn": "OrderId"
+          },
+          {
             "type": "calculated",
-            "name": "Calculated Column 1",
-            "dataType": "string",
+            "name": "PreviousDayValue",
+            "dataType": "int64",
             "isDataTypeInferred": true,
-            "expression": " 'Fact Cases'[Country/Region] & \"|\" & 'Fact Cases'[Date]"
+            "expression": " LOOKUPVALUE('Fact Cases'[Value], 'Fact Cases'[OrderId] , 'Fact Cases'[OrderId] + 1)"
+          },
+          {
+            "type": "calculated",
+            "name": "DailyCases",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "expression": "IF('Fact Cases'[Date] = DATEVALUE(\"01/22/2020\"), 'Fact Cases'[Value],  'Fact Cases'[Value] - 'Fact Cases'[PreviousDayValue])"
           }
         ],
         "partitions": [
@@ -104,6 +118,25 @@
             "name": "UpdatedDate",
             "dataType": "dateTime",
             "sourceColumn": "UpdatedDate"
+          },
+          {
+            "name": "OrderId",
+            "dataType": "int64",
+            "sourceColumn": "OrderId"
+          },
+          {
+            "type": "calculated",
+            "name": "PreviousDayValue",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "expression": " LOOKUPVALUE('Fact Deaths'[Value], 'Fact Deaths'[OrderId], 'Fact Deaths'[OrderId] + 1)"
+          },
+          {
+            "type": "calculated",
+            "name": "DailyDeaths",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "expression": "IF('Fact Deaths'[Date] = DATEVALUE(\"01/22/2020\"), 'Fact Deaths'[Value],  'Fact Deaths'[Value] - 'Fact Deaths'[PreviousDayValue])"
           }
         ],
         "partitions": [
