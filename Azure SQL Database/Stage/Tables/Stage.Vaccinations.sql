@@ -11,12 +11,12 @@
 	[TotalBoosters] INT NULL,
 	[DailyVaccinationsRaw] INT NULL,
 	[DailyVaccinations] INT NULL,
-	[TotalVaccinationsPerHundred] DECIMAL(6, 2) NULL,
-	[PeopleVaccinatedPerHundred] DECIMAL(6, 2) NULL,
-	[PeopleFullyVaccinatedPerHundred] DECIMAL(6, 2) NULL,
-	[TotalBustersPerHundred] DECIMAL(6, 2) NULL,
+	[TotalVaccinationsPerHundred] DECIMAL(7, 3) NULL,
+	[PeopleVaccinatedPerHundred] DECIMAL(7, 3) NULL,
+	[PeopleFullyVaccinatedPerHundred] DECIMAL(7, 3) NULL,
+	[TotalBustersPerHundred] DECIMAL(7, 3) NULL,
 	[DailyVaccinationsPerMillion] INT NULL,
 	[DailyPeopleVaccinated] INT NULL,
-	[DailyPeopleVaccinatedPerHundred] DECIMAL(4, 3) NULL,
+	[DailyPeopleVaccinatedPerHundred] DECIMAL(6, 4) NULL,
 	[LoadDate] DATETIME NOT NULL CONSTRAINT DF_Stage_Vaccinations_LoadDate DEFAULT (SYSUTCDATETIME())
 )
