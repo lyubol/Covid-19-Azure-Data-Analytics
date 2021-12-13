@@ -2,7 +2,7 @@
 (
 	[DeathsId] INT IDENTITY(1,1) NOT NULL,
 	[DeathsKey] NVARCHAR(100) NOT NULL,
-	[Country/Region] VARCHAR(50) NULL,
+	[Country] VARCHAR(50) NULL,
 	[Date] DATE NULL,
 	[Value] INT NULL,
 	[LoadDate] DATETIME NOT NULL CONSTRAINT DF_Stage_Deaths_LoadDate DEFAULT (SYSUTCDATETIME())

@@ -12,7 +12,7 @@ BEGIN
 		UPDATE 
 		SET
 			[CasesKey]			= SRC.[CasesKey],
-			[Country/Region]	= SRC.[Country/Region],
+			[Country]			= SRC.[Country],
 			[Date]				= SRC.[Date],
 			[Value]				= SRC.[Value]
 
@@ -20,14 +20,14 @@ BEGIN
 		INSERT
 			(
 				[CasesKey],
-				[Country/Region],
+				[Country],
 				[Date],
 				[Value]
 			)
 		VALUES
 			(
 				SRC.[CasesKey],
-				SRC.[Country/Region],
+				SRC.[Country],
 				SRC.[Date],
 				SRC.[Value]
 			);
