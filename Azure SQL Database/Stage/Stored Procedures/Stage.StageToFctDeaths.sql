@@ -12,7 +12,7 @@ BEGIN
 		UPDATE 
 		SET
 			[DeathsKey]			= SRC.[DeathsKey],
-			[Country/Region]	= SRC.[Country/Region],
+			[Country]			= SRC.[Country],
 			[Date]				= SRC.[Date],
 			[Value]				= SRC.[Value],
 			[UpdatedDate]		= SYSUTCDATETIME()
@@ -21,7 +21,7 @@ BEGIN
 		INSERT
 			(
 				[DeathsKey],
-				[Country/Region],
+				[Country],
 				[Date],
 				[Value],
 				[UpdatedDate]
@@ -29,7 +29,7 @@ BEGIN
 		VALUES
 			(
 				SRC.[DeathsKey],
-				SRC.[Country/Region],
+				SRC.[Country],
 				SRC.[Date],
 				SRC.[Value],
 				SYSUTCDATETIME()
