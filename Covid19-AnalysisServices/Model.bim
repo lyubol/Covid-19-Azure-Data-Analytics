@@ -231,6 +231,22 @@
         ]
       }
     ],
+    "relationships": [
+      {
+        "name": "21afcfb5-064b-49b0-ae60-059add9ca002",
+        "fromTable": "Fact Deaths",
+        "fromColumn": "Country/Region",
+        "toTable": "Dim Country",
+        "toColumn": "Country"
+      },
+      {
+        "name": "b3438b56-7ccd-45a8-8a2e-e5801a7f8447",
+        "fromTable": "Fact Cases",
+        "fromColumn": "Country/Region",
+        "toTable": "Dim Country",
+        "toColumn": "Country"
+      }
+    ],
     "annotations": [
       {
         "name": "ClientCompatibilityLevel",
