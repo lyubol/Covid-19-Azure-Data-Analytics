@@ -9,7 +9,6 @@
 		[Population],
 		[PopulationDensity],
 		[MedianAge],
-		[GdpPerCapita],
 		[HumanDevelopmentIndex],
 		[LifeExpectancy],
 		[Aged65Older],

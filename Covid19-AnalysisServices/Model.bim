@@ -18,8 +18,6 @@
         },
         "credential": {
           "AuthenticationKind": "UsernamePassword",
-          "kind": "SQL",
-          "path": "lirkovsrv.database.windows.net;Covid19",
           "Username": "lirkov",
           "EncryptConnection": true
         }
@@ -151,6 +149,82 @@
                 "    Fact_Deaths = Source{[Schema=\"Fact\",Item=\"Deaths\"]}[Data]",
                 "in",
                 "    Fact_Deaths"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Dim Country",
+        "columns": [
+          {
+            "name": "CountryId",
+            "dataType": "int64",
+            "sourceColumn": "CountryId"
+          },
+          {
+            "name": "Continent",
+            "dataType": "string",
+            "sourceColumn": "Continent"
+          },
+          {
+            "name": "Country",
+            "dataType": "string",
+            "sourceColumn": "Country"
+          },
+          {
+            "name": "CountryCode",
+            "dataType": "string",
+            "sourceColumn": "CountryCode"
+          },
+          {
+            "name": "Population",
+            "dataType": "int64",
+            "sourceColumn": "Population"
+          },
+          {
+            "name": "PopulationDensity",
+            "dataType": "double",
+            "sourceColumn": "PopulationDensity"
+          },
+          {
+            "name": "MedianAge",
+            "dataType": "double",
+            "sourceColumn": "MedianAge"
+          },
+          {
+            "name": "HumanDevelopmentIndex",
+            "dataType": "double",
+            "sourceColumn": "HumanDevelopmentIndex"
+          },
+          {
+            "name": "LifeExpectancy",
+            "dataType": "double",
+            "sourceColumn": "LifeExpectancy"
+          },
+          {
+            "name": "Aged65Older",
+            "dataType": "double",
+            "sourceColumn": "Aged65Older"
+          },
+          {
+            "name": "Aged70Older",
+            "dataType": "double",
+            "sourceColumn": "Aged70Older"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/lirkovsrv database windows net;Covid19\",",
+                "    Dim_Country = Source{[Schema=\"Dim\",Item=\"Country\"]}[Data]",
+                "in",
+                "    Dim_Country"
               ]
             }
           }

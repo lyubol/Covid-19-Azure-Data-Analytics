@@ -1,5 +1,5 @@
 ﻿PRINT 'Merging into [Dim].[Country] ...';
-SET IDENTITY_INSERT [Dim].[Country] ON;
+-- SET IDENTITY_INSERT [Dim].[Country] ON;
 
 
 WITH SRC AS
@@ -44,7 +44,7 @@ WITH SRC AS
         (36,	'CHN',  	'China',	                        'Asia',	            1444216102,	    147.674,	38.7,	    0.761,	    76.91,	    10.641,	    5.929),
         (37,	'COL',  	'Colombia',	                        'South America',	51265841,	    44.223,	    32.2,	    0.767,	    77.29,	    7.646,	    4.312),
         (38,	'COM',  	'Comoros',	                        'Africa',	        888456,	        437.352,	20.4,	    0.554,	    64.32,	    2.963,	    1.726),
-        (39,	'COG',  	'Congo (Brazzaville',	            'Africa',	        5657017,	    15.405,	    19,	        0.574,	    64.57,	    3.402,	    2.063),
+        (39,	'COG',  	'Congo (Brazzaville)',	            'Africa',	        5657017,	    15.405,	    19,	        0.574,	    64.57,	    3.402,	    2.063),
         (40,	'CRI',  	'Costa Rica',	                    'North America',	5139053,	    96.079,	    33.6,	    0.81,	    80.28,	    9.468,	    5.694),
         (41,	'CIV',  	'Cote d''Ivoire',	                'Africa',	        27053629,	    76.399,	    18.7,	    0.538,	    57.78,	    2.933,	    1.582),
         (42,	'HRV',  	'Croatia',	                        'Europe',	        4081657,	    73.726,	    44,	        0.851,	    78.49,	    19.724,	    13.053),
@@ -165,7 +165,7 @@ WITH SRC AS
         (157,   'SLB',  	'Solomon Islands',	                'Oceania',      	703995,	        21.841,	    20.8,	    0.567,	    73,     	3.507,  	2.043),
         (158,   'SOM',  	'Somalia',	                        'Africa',       	16359500,   	23.5,	    16.8,	    NULL,	    57.4,	    2.731,	    1.496),
         (159,   'ZAF',  	'South Africa',	                    'Africa',       	60041996,   	46.754,	    27.3,	    0.709,	    64.13,	    5.344,	    3.053),
-        (160,   'KOR',  	'Korea South',	                    'Asia',         	51305184,   	527.967,	43.4,	    0.916,	    83.03,	    13.914,	    8.622),
+        (160,   'KOR',  	'Korea, South',	                    'Asia',         	51305184,   	527.967,	43.4,	    0.916,	    83.03,	    13.914,	    8.622),
         (161,   'SSD',  	'South Sudan',	                    'Africa',       	11381377,   	NULL,	    19.2,	    0.433,	    57.85,	    3.441,	    2.032),
         (162,   'ESP',  	'Spain',	                        'Europe',       	46745211,   	93.105,	    45.5,	    0.904,	    83.56,	    19.436,	    13.799),
         (163,   'LKA',  	'Sri Lanka',	                    'Asia',         	21497306,   	341.955,	34.1,	    0.782,	    76.98,	    10.069,	    5.331),
@@ -269,4 +269,4 @@ WHEN NOT MATCHED BY SOURCE THEN
     DELETE;
 
 
-SET IDENTITY_INSERT [Dim].[Country] OFF;
+-- SET IDENTITY_INSERT [Dim].[Country] OFF;
