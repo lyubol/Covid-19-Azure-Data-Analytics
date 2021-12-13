@@ -77,7 +77,6 @@
     <Build Include="Stage\Tables\Stage.Cases.sql" />
     <Build Include="Stage\Tables\Stage.Deaths.sql" />
     <Build Include="Security\Schemas\Dim.sql" />
-    <Build Include="Dim\Tables\Dim.Country.sql" />
     <Build Include="Stage\Stored Procedures\Stage.StageToFctCases.sql" />
     <Build Include="Stage\Stored Procedures\Stage.StageToFctDeaths.sql" />
     <Build Include="Fct\Tables\Fct.Cases.sql" />
@@ -87,11 +86,8 @@
     <Build Include="Security\Schemas\Dimension.sql" />
     <Build Include="Fact\Views\Fact.Cases.sql" />
     <Build Include="Fact\Views\Fact.Deaths.sql" />
-    <Build Include="Dimension\Views\Dimension.CountryCode.sql" />
-    <Build Include="Dim\Tables\Dim.CountryDetailed.sql" />
-    <Build Include="Stage\Tables\Stage.CountryDetailed.sql" />
-    <Build Include="Stage\Stored Procedures\Stage.StageToDimCountryDetailed.sql" />
-    <Build Include="Dimension\Views\DimensionCountryDetailed.sql" />
+    <Build Include="Dim\Tables\Dim.Country.sql" />
+    <Build Include="Dimension\Views\Dimension.Country.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Project\Scripts\Dim.CountryCode.Populate.sql" />

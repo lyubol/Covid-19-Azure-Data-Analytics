@@ -48,6 +48,15 @@ display(cases_raw_df)
 
 # COMMAND ----------
 
+# DBTITLE 1,Clean 'Country/Region' column
+# replacing 'Taiwan*' with 'Taiwan'
+cases_raw_df = cases_raw_df.replace('Taiwan*', 'Taiwan', subset='Country/Region')
+
+# drop values, which are not country names
+cases_raw_df = cases_raw_df.where((cases_raw_df['Country/Region'] != 'Summer Olympics 2020') & (cases_raw_df['Country/Region'] != 'Diamond Princess') & (cases_raw_df['Country/Region'] != 'MS Zaandam'))
+
+# COMMAND ----------
+
 # DBTITLE 1,Remove first row (sub-header)
 cases_raw_df = cases_raw_df.filter(col('Country/Region') != '#country+name')
 

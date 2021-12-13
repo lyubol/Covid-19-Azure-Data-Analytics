@@ -48,6 +48,15 @@ display(deaths_raw_df)
 
 # COMMAND ----------
 
+# DBTITLE 1,Replace nulls in 'Province/State'
+# replacing 'Taiwan*' with 'Taiwan'
+deaths_raw_df = deaths_raw_df.replace('Taiwan*', 'Taiwan', subset='Country/Region')
+
+# drop values, which are not country names
+deaths_raw_df = deaths_raw_df.where((deaths_raw_df['Country/Region'] != 'Summer Olympics 2020') & (deaths_raw_df['Country/Region'] != 'Diamond Princess') & (deaths_raw_df['Country/Region'] != 'MS Zaandam'))
+
+# COMMAND ----------
+
 # DBTITLE 1,Remove first row (sub-header)
 deaths_raw_df = deaths_raw_df.filter(col('Country/Region') != '#country+name')
 

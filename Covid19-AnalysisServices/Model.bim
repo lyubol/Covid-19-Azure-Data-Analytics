@@ -18,8 +18,6 @@
         },
         "credential": {
           "AuthenticationKind": "UsernamePassword",
-          "kind": "SQL",
-          "path": "lirkovsrv.database.windows.net;Covid19",
           "Username": "lirkov",
           "EncryptConnection": true
         }
@@ -157,7 +155,7 @@
         ]
       },
       {
-        "name": "Dimension CountryCode",
+        "name": "Dim Country",
         "columns": [
           {
             "name": "CountryId",
@@ -165,29 +163,54 @@
             "sourceColumn": "CountryId"
           },
           {
+            "name": "Continent",
+            "dataType": "string",
+            "sourceColumn": "Continent"
+          },
+          {
+            "name": "Country",
+            "dataType": "string",
+            "sourceColumn": "Country"
+          },
+          {
             "name": "CountryCode",
             "dataType": "string",
             "sourceColumn": "CountryCode"
           },
           {
-            "name": "Country/Region",
-            "dataType": "string",
-            "sourceColumn": "Country/Region"
+            "name": "Population",
+            "dataType": "int64",
+            "sourceColumn": "Population"
           },
           {
-            "name": "RegionCode",
-            "dataType": "int64",
-            "sourceColumn": "RegionCode"
+            "name": "PopulationDensity",
+            "dataType": "double",
+            "sourceColumn": "PopulationDensity"
           },
           {
-            "name": "SubRegionCode",
-            "dataType": "int64",
-            "sourceColumn": "SubRegionCode"
+            "name": "MedianAge",
+            "dataType": "double",
+            "sourceColumn": "MedianAge"
           },
           {
-            "name": "IntermediateRegionCode",
-            "dataType": "int64",
-            "sourceColumn": "IntermediateRegionCode"
+            "name": "HumanDevelopmentIndex",
+            "dataType": "double",
+            "sourceColumn": "HumanDevelopmentIndex"
+          },
+          {
+            "name": "LifeExpectancy",
+            "dataType": "double",
+            "sourceColumn": "LifeExpectancy"
+          },
+          {
+            "name": "Aged65Older",
+            "dataType": "double",
+            "sourceColumn": "Aged65Older"
+          },
+          {
+            "name": "Aged70Older",
+            "dataType": "double",
+            "sourceColumn": "Aged70Older"
           }
         ],
         "partitions": [
@@ -199,9 +222,9 @@
               "expression": [
                 "let",
                 "    Source = #\"SQL/lirkovsrv database windows net;Covid19\",",
-                "    Dimension_CountryCode = Source{[Schema=\"Dimension\",Item=\"CountryCode\"]}[Data]",
+                "    Dim_Country = Source{[Schema=\"Dim\",Item=\"Country\"]}[Data]",
                 "in",
-                "    Dimension_CountryCode"
+                "    Dim_Country"
               ]
             }
           }
@@ -210,18 +233,18 @@
     ],
     "relationships": [
       {
-        "name": "c834e1bd-5f28-41ed-9e04-f83eb0338522",
+        "name": "21afcfb5-064b-49b0-ae60-059add9ca002",
         "fromTable": "Fact Deaths",
         "fromColumn": "Country/Region",
-        "toTable": "Dimension CountryCode",
-        "toColumn": "Country/Region"
+        "toTable": "Dim Country",
+        "toColumn": "Country"
       },
       {
-        "name": "ada411ca-75c3-4f4e-af67-6104c144073a",
+        "name": "b3438b56-7ccd-45a8-8a2e-e5801a7f8447",
         "fromTable": "Fact Cases",
         "fromColumn": "Country/Region",
-        "toTable": "Dimension CountryCode",
-        "toColumn": "Country/Region"
+        "toTable": "Dim Country",
+        "toColumn": "Country"
       }
     ],
     "annotations": [
