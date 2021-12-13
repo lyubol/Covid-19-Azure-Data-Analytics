@@ -88,6 +88,10 @@
     <Build Include="Fact\Views\Fact.Deaths.sql" />
     <Build Include="Dim\Tables\Dim.Country.sql" />
     <Build Include="Dimension\Views\Dimension.Country.sql" />
+    <Build Include="Stage\Tables\Stage.Vaccinations.sql" />
+    <Build Include="Stage\Stored Procedures\Stage.StageToFctVaccinations.sql" />
+    <Build Include="Fct\Tables\Fct.Vaccinations.sql" />
+    <Build Include="Fact\Views\Fact.Vaccinations.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Project\Scripts\Dim.CountryCode.Populate.sql" />
