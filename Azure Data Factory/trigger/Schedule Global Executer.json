@@ -1,5 +1,5 @@
 {
-	"name": "Execute Global Executer",
+	"name": "Schedule Global Executer",
 	"properties": {
 		"annotations": [],
 		"runtimeState": "Started",
@@ -14,7 +14,7 @@
 		"type": "ScheduleTrigger",
 		"typeProperties": {
 			"recurrence": {
-				"frequency": "Day",
+				"frequency": "Week",
 				"interval": 1,
 				"startTime": "2021-12-14T12:12:00Z",
 				"timeZone": "UTC",
@@ -24,6 +24,13 @@
 					],
 					"hours": [
 						11
+					],
+					"weekDays": [
+						"Monday",
+						"Tuesday",
+						"Wednesday",
+						"Thursday",
+						"Friday"
 					]
 				}
 			}
