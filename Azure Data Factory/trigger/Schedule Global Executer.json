@@ -1,5 +1,5 @@
 {
-	"name": "Trigger Global Executer",
+	"name": "Schedule Global Executer",
 	"properties": {
 		"annotations": [],
 		"runtimeState": "Started",
