@@ -1,0 +1,27 @@
+{
+	"name": "Raw_Covid19_Vaccinations",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "adlslirkov",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Raw"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "Raw_Covid19_Vaccinations.csv",
+				"folderPath": "raw",
+				"fileSystem": "covid"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}

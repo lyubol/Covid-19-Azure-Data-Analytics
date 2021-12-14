@@ -1,0 +1,119 @@
+{
+	"name": "Stage_Vaccinations",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "lirkovdb",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Warehouse"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "VaccinationsId",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "VaccinationsKey",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Country",
+				"type": "varchar"
+			},
+			{
+				"name": "CountryCode",
+				"type": "char"
+			},
+			{
+				"name": "Date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "TotalVaccinations",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "PeopleVaccinated",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "PeopleFullyVaccinated",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "TotalBoosters",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "DailyVaccinationsRaw",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "DailyVaccinations",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "TotalVaccinationsPerHundred",
+				"type": "decimal",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "PeopleVaccinatedPerHundred",
+				"type": "decimal",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "PeopleFullyVaccinatedPerHundred",
+				"type": "decimal",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "TotalBustersPerHundred",
+				"type": "decimal",
+				"precision": 6,
+				"scale": 2
+			},
+			{
+				"name": "DailyVaccinationsPerMillion",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "DailyPeopleVaccinated",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "DailyPeopleVaccinatedPerHundred",
+				"type": "decimal",
+				"precision": 4,
+				"scale": 3
+			},
+			{
+				"name": "LoadDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "Stage",
+			"table": "Vaccinations"
+		}
+	}
+}
