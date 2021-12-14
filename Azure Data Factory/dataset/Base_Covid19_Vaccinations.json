@@ -1,0 +1,93 @@
+{
+	"name": "Base_Covid19_Vaccinations",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "adlslirkov",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Base"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "Fct.Vaccinations_export.parquet",
+				"folderPath": "base/Vaccinations",
+				"fileSystem": "covid"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "VaccinationsKey",
+				"type": "UTF8"
+			},
+			{
+				"name": "Country",
+				"type": "UTF8"
+			},
+			{
+				"name": "CountryCode",
+				"type": "UTF8"
+			},
+			{
+				"name": "Date",
+				"type": "DATE"
+			},
+			{
+				"name": "TotalVaccinations",
+				"type": "INT32"
+			},
+			{
+				"name": "PeopleVaccinated",
+				"type": "INT32"
+			},
+			{
+				"name": "PeopleFullyVaccinated",
+				"type": "INT32"
+			},
+			{
+				"name": "TotalBoosters",
+				"type": "INT32"
+			},
+			{
+				"name": "DailyVaccinationsRaw",
+				"type": "INT32"
+			},
+			{
+				"name": "DailyVaccinations",
+				"type": "INT32"
+			},
+			{
+				"name": "TotalVaccinationsPerHundred",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "PeopleVaccinatedPerHundred",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "PeopleFullyVaccinatedPerHundred",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "TotalBustersPerHundred",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "DailyVaccinationsPerMillion",
+				"type": "INT32"
+			},
+			{
+				"name": "DailyPeopleVaccinated",
+				"type": "INT32"
+			},
+			{
+				"name": "DailyPeopleVaccinatedPerHundred",
+				"type": "DOUBLE"
+			}
+		]
+	}
+}
