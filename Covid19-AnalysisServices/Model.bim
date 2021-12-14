@@ -33,11 +33,6 @@
             "sourceColumn": "CasesKey"
           },
           {
-            "name": "Country/Region",
-            "dataType": "string",
-            "sourceColumn": "Country/Region"
-          },
-          {
             "name": "Date",
             "dataType": "dateTime",
             "sourceColumn": "Date"
@@ -70,6 +65,11 @@
             "dataType": "int64",
             "isDataTypeInferred": true,
             "expression": "IF('Fact Cases'[Date] = DATEVALUE(\"01/22/2020\"), 'Fact Cases'[Value],  'Fact Cases'[Value] - 'Fact Cases'[PreviousDayValue])"
+          },
+          {
+            "name": "CountryCode",
+            "dataType": "string",
+            "sourceColumn": "CountryCode"
           }
         ],
         "partitions": [
@@ -96,11 +96,6 @@
             "name": "DeathsKey",
             "dataType": "string",
             "sourceColumn": "DeathsKey"
-          },
-          {
-            "name": "Country/Region",
-            "dataType": "string",
-            "sourceColumn": "Country/Region"
           },
           {
             "name": "Date",
@@ -135,6 +130,11 @@
             "dataType": "int64",
             "isDataTypeInferred": true,
             "expression": "IF('Fact Deaths'[Date] = DATEVALUE(\"01/22/2020\"), 'Fact Deaths'[Value],  'Fact Deaths'[Value] - 'Fact Deaths'[PreviousDayValue])"
+          },
+          {
+            "name": "CountryCode",
+            "dataType": "string",
+            "sourceColumn": "CountryCode"
           }
         ],
         "partitions": [
@@ -229,22 +229,135 @@
             }
           }
         ]
+      },
+      {
+        "name": "Fact Vaccinations",
+        "columns": [
+          {
+            "name": "VaccinationsKey",
+            "dataType": "string",
+            "sourceColumn": "VaccinationsKey"
+          },
+          {
+            "name": "CountryCode",
+            "dataType": "string",
+            "sourceColumn": "CountryCode"
+          },
+          {
+            "name": "Date",
+            "dataType": "dateTime",
+            "sourceColumn": "Date"
+          },
+          {
+            "name": "TotalVaccinations",
+            "dataType": "int64",
+            "sourceColumn": "TotalVaccinations"
+          },
+          {
+            "name": "PeopleVaccinated",
+            "dataType": "int64",
+            "sourceColumn": "PeopleVaccinated"
+          },
+          {
+            "name": "PeopleFullyVaccinated",
+            "dataType": "int64",
+            "sourceColumn": "PeopleFullyVaccinated"
+          },
+          {
+            "name": "TotalBoosters",
+            "dataType": "int64",
+            "sourceColumn": "TotalBoosters"
+          },
+          {
+            "name": "DailyVaccinationsRaw",
+            "dataType": "int64",
+            "sourceColumn": "DailyVaccinationsRaw"
+          },
+          {
+            "name": "DailyVaccinations",
+            "dataType": "int64",
+            "sourceColumn": "DailyVaccinations"
+          },
+          {
+            "name": "TotalVaccinationsPerHundred",
+            "dataType": "double",
+            "sourceColumn": "TotalVaccinationsPerHundred"
+          },
+          {
+            "name": "PeopleVaccinatedPerHundred",
+            "dataType": "double",
+            "sourceColumn": "PeopleVaccinatedPerHundred"
+          },
+          {
+            "name": "PeopleFullyVaccinatedPerHundred",
+            "dataType": "double",
+            "sourceColumn": "PeopleFullyVaccinatedPerHundred"
+          },
+          {
+            "name": "TotalBustersPerHundred",
+            "dataType": "double",
+            "sourceColumn": "TotalBustersPerHundred"
+          },
+          {
+            "name": "DailyVaccinationsPerMillion",
+            "dataType": "int64",
+            "sourceColumn": "DailyVaccinationsPerMillion"
+          },
+          {
+            "name": "DailyPeopleVaccinated",
+            "dataType": "int64",
+            "sourceColumn": "DailyPeopleVaccinated"
+          },
+          {
+            "name": "DailyPeopleVaccinatedPerHundred",
+            "dataType": "double",
+            "sourceColumn": "DailyPeopleVaccinatedPerHundred"
+          },
+          {
+            "name": "UpdatedDate",
+            "dataType": "dateTime",
+            "sourceColumn": "UpdatedDate"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/lirkovsrv database windows net;Covid19\",",
+                "    Fact_Vaccinations = Source{[Schema=\"Fact\",Item=\"Vaccinations\"]}[Data]",
+                "in",
+                "    Fact_Vaccinations"
+              ]
+            }
+          }
+        ]
       }
     ],
     "relationships": [
       {
         "name": "21afcfb5-064b-49b0-ae60-059add9ca002",
         "fromTable": "Fact Deaths",
-        "fromColumn": "Country/Region",
+        "fromColumn": "CountryCode",
         "toTable": "Dim Country",
-        "toColumn": "Country"
+        "toColumn": "CountryCode"
       },
       {
         "name": "b3438b56-7ccd-45a8-8a2e-e5801a7f8447",
         "fromTable": "Fact Cases",
-        "fromColumn": "Country/Region",
+        "fromColumn": "CountryCode",
         "toTable": "Dim Country",
-        "toColumn": "Country"
+        "toColumn": "CountryCode"
+      },
+      {
+        "name": "933e811e-a9e9-45c6-9b33-e507065c5944",
+        "fromTable": "Fact Vaccinations",
+        "fromColumn": "CountryCode",
+        "toTable": "Dim Country",
+        "toColumn": "CountryCode"
       }
     ],
     "annotations": [
