@@ -2,7 +2,6 @@
 (
 	[VaccinationsId] INT IDENTITY(1, 1) NOT NULL,
 	[VaccinationsKey] NVARCHAR(100) NOT NULL,
-	[Country] VARCHAR(50) NULL,
 	[CountryCode] CHAR(3) NULL,
 	[Date] DATETIME NULL,
 	[TotalVaccinations] INT NULL,

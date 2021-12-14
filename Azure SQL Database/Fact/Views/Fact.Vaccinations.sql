@@ -3,7 +3,6 @@
 
 	SELECT
 		[VaccinationsKey],
-		[Country],
 		[CountryCode],
 		[Date],
 		[TotalVaccinations],

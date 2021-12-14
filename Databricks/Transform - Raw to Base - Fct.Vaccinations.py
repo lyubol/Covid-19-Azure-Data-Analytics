@@ -72,7 +72,6 @@ vaccinations_raw_df = vaccinations_raw_df.where(~vaccinations_raw_df.CountryCode
 fct_vaccinations_df = (vaccinations_raw_df.withColumn('VaccinationsKey', sha2(concat(col('Country'), col('Date')), 256))
                                           .select(
                                               col('VaccinationsKey').alias('VaccinationsKey'),
-                                              col('Country').alias('Country'),
                                               col('CountryCode').alias('CountryCode'),
                                               col('Date').alias('Date'),
                                               col('TotalVaccinations').alias('TotalVaccinations'),

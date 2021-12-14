@@ -1,7 +1,6 @@
 ﻿CREATE TABLE [Fct].[Vaccinations]
 (
 	[VaccinationsKey] NVARCHAR(100) NOT NULL,
-	[Country] VARCHAR(50) NOT NULL,
 	[CountryCode] CHAR(3) NOT NULL,
 	[Date] DATETIME NOT NULL,
 	[TotalVaccinations] INT NULL,
