@@ -4,34 +4,45 @@ AS
 BEGIN
 
 	MERGE INTO [Fct].[Cases] AS TGT
-	USING 
-		[Stage].[Cases] AS SRC
+	USING (
+        SELECT 
+            SC.*, 
+            DC.[CountryCode] 
+        FROM 
+            Stage.Cases AS SC
+            LEFT JOIN [Dim].[Country] AS DC
+                ON SC.[Country] = DC.[Country]
+        ) AS SRC
 		ON TGT.[CasesKey] = SRC.[CasesKey]
 
 	WHEN MATCHED THEN
 		UPDATE 
 		SET
 			[CasesKey]			= SRC.[CasesKey],
-			[Country]			= SRC.[Country],
+			[CountryCode]		= SRC.[CountryCode],
 			[Date]				= SRC.[Date],
-			[Value]				= SRC.[Value]
+			[Value]				= SRC.[Value],
+			[UpdatedDate]		= SYSUTCDATETIME()
 
 	WHEN NOT MATCHED BY TARGET THEN 
 		INSERT
 			(
 				[CasesKey],
-				[Country],
+				[CountryCode],
 				[Date],
-				[Value]
+				[Value],
+				[UpdatedDate]
 			)
 		VALUES
 			(
 				SRC.[CasesKey],
-				SRC.[Country],
+				SRC.[CountryCode],
 				SRC.[Date],
-				SRC.[Value]
+				SRC.[Value],
+				SYSUTCDATETIME()
 			);
 
 	SELECT @@ROWCOUNT;
 
 END
+

@@ -4,15 +4,22 @@ AS
 BEGIN
 
 	MERGE INTO [Fct].[Deaths] AS TGT
-	USING 
-		[Stage].[Deaths] AS SRC
+	USING (
+        SELECT 
+            SD.*, 
+            DC.[CountryCode] 
+        FROM 
+            [Stage].[Deaths] AS SD
+            LEFT JOIN [Dim].[Country] AS DC
+                ON SD.[Country] = DC.[Country]
+        ) AS SRC
 		ON TGT.[DeathsKey] = SRC.[DeathsKey]
 
 	WHEN MATCHED THEN
 		UPDATE 
 		SET
 			[DeathsKey]			= SRC.[DeathsKey],
-			[Country]			= SRC.[Country],
+			[CountryCode]		= SRC.[CountryCode],
 			[Date]				= SRC.[Date],
 			[Value]				= SRC.[Value],
 			[UpdatedDate]		= SYSUTCDATETIME()
@@ -21,7 +28,7 @@ BEGIN
 		INSERT
 			(
 				[DeathsKey],
-				[Country],
+				[CountryCode],
 				[Date],
 				[Value],
 				[UpdatedDate]
@@ -29,7 +36,7 @@ BEGIN
 		VALUES
 			(
 				SRC.[DeathsKey],
-				SRC.[Country],
+				SRC.[CountryCode],
 				SRC.[Date],
 				SRC.[Value],
 				SYSUTCDATETIME()
@@ -38,3 +45,4 @@ BEGIN
 	SELECT @@ROWCOUNT;
 
 END
+

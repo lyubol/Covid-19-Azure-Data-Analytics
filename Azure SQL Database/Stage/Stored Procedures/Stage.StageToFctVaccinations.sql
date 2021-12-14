@@ -12,7 +12,6 @@ BEGIN
 		UPDATE 
 		SET
 			[VaccinationsKey]					= SRC.[VaccinationsKey],
-			[Country]							= SRC.[Country],
 			[CountryCode]						= SRC.[CountryCode],
 			[Date]								= SRC.[Date],
 			[TotalVaccinations]					= SRC.[TotalVaccinations],
@@ -34,7 +33,6 @@ BEGIN
 		INSERT
 			(
 				[VaccinationsKey],
-				[Country],
 				[CountryCode],
 				[Date],
 				[TotalVaccinations],
@@ -55,7 +53,6 @@ BEGIN
 		VALUES
 			(
 				SRC.[VaccinationsKey],
-				SRC.[Country],
 				SRC.[CountryCode],
 				SRC.[Date],
 				SRC.[TotalVaccinations],

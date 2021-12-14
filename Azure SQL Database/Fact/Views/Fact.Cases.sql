@@ -3,10 +3,10 @@ AS
 	
 SELECT 
 	[CasesKey],
-	[Country],
+	[CountryCode],
 	[Date],
 	[Value],
 	[UpdatedDate],
-    ROW_NUMBER() OVER(ORDER BY [Country] ASC, [Date] DESC) AS [OrderId]
+    ROW_NUMBER() OVER(ORDER BY [CountryCode] ASC, [Date] DESC) AS [OrderId]
 FROM 
 	[Fct].[Cases]
