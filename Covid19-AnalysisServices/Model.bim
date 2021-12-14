@@ -18,6 +18,8 @@
         },
         "credential": {
           "AuthenticationKind": "UsernamePassword",
+          "kind": "SQL",
+          "path": "lirkovsrv.database.windows.net;Covid19",
           "Username": "lirkov",
           "EncryptConnection": true
         }
@@ -28,7 +30,7 @@
         "name": "Fact Cases",
         "columns": [
           {
-            "name": "CasesKey",
+            "name": "Cases Key",
             "dataType": "string",
             "sourceColumn": "CasesKey"
           },
@@ -43,31 +45,31 @@
             "sourceColumn": "Value"
           },
           {
-            "name": "UpdatedDate",
+            "name": "Updated Date",
             "dataType": "dateTime",
             "sourceColumn": "UpdatedDate"
           },
           {
-            "name": "OrderId",
+            "name": "Order Id",
             "dataType": "int64",
             "sourceColumn": "OrderId"
           },
           {
             "type": "calculated",
-            "name": "PreviousDayValue",
+            "name": "Previous Day Value",
             "dataType": "int64",
             "isDataTypeInferred": true,
-            "expression": " LOOKUPVALUE('Fact Cases'[Value], 'Fact Cases'[OrderId] , 'Fact Cases'[OrderId] + 1)"
+            "expression": " LOOKUPVALUE('Fact Cases'[Value], 'Fact Cases'[Order Id] , 'Fact Cases'[Order Id] + 1)"
           },
           {
             "type": "calculated",
-            "name": "DailyCases",
+            "name": "Daily Value",
             "dataType": "int64",
             "isDataTypeInferred": true,
-            "expression": "IF('Fact Cases'[Date] = DATEVALUE(\"01/22/2020\"), 'Fact Cases'[Value],  'Fact Cases'[Value] - 'Fact Cases'[PreviousDayValue])"
+            "expression": "IF('Fact Cases'[Date] = DATEVALUE(\"01/22/2020\"), 'Fact Cases'[Value],  'Fact Cases'[Value] - 'Fact Cases'[Previous Day Value])"
           },
           {
-            "name": "CountryCode",
+            "name": "Country Code",
             "dataType": "string",
             "sourceColumn": "CountryCode"
           }
@@ -87,13 +89,19 @@
               ]
             }
           }
+        ],
+        "measures": [
+          {
+            "name": "Cases to Population Ratio",
+            "expression": "  DIVIDE(MAX('Fact Cases'[Value]), SUM('Dimension Country'[Population]))"
+          }
         ]
       },
       {
         "name": "Fact Deaths",
         "columns": [
           {
-            "name": "DeathsKey",
+            "name": "Deaths Key",
             "dataType": "string",
             "sourceColumn": "DeathsKey"
           },
@@ -108,31 +116,31 @@
             "sourceColumn": "Value"
           },
           {
-            "name": "UpdatedDate",
+            "name": "Updated Date",
             "dataType": "dateTime",
             "sourceColumn": "UpdatedDate"
           },
           {
-            "name": "OrderId",
+            "name": "Order Id",
             "dataType": "int64",
             "sourceColumn": "OrderId"
           },
           {
             "type": "calculated",
-            "name": "PreviousDayValue",
+            "name": "Previous Day Value",
             "dataType": "int64",
             "isDataTypeInferred": true,
-            "expression": " LOOKUPVALUE('Fact Deaths'[Value], 'Fact Deaths'[OrderId], 'Fact Deaths'[OrderId] + 1)"
+            "expression": " LOOKUPVALUE('Fact Deaths'[Value], 'Fact Deaths'[Order Id], 'Fact Deaths'[Order Id] + 1)"
           },
           {
             "type": "calculated",
-            "name": "DailyDeaths",
+            "name": "Daily Value",
             "dataType": "int64",
             "isDataTypeInferred": true,
-            "expression": "IF('Fact Deaths'[Date] = DATEVALUE(\"01/22/2020\"), 'Fact Deaths'[Value],  'Fact Deaths'[Value] - 'Fact Deaths'[PreviousDayValue])"
+            "expression": "IF('Fact Deaths'[Date] = DATEVALUE(\"01/22/2020\"), 'Fact Deaths'[Value],  'Fact Deaths'[Value] - 'Fact Deaths'[Previous Day Value])"
           },
           {
-            "name": "CountryCode",
+            "name": "Country Code",
             "dataType": "string",
             "sourceColumn": "CountryCode"
           }
@@ -152,81 +160,11 @@
               ]
             }
           }
-        ]
-      },
-      {
-        "name": "Dim Country",
-        "columns": [
-          {
-            "name": "CountryId",
-            "dataType": "int64",
-            "sourceColumn": "CountryId"
-          },
-          {
-            "name": "Continent",
-            "dataType": "string",
-            "sourceColumn": "Continent"
-          },
-          {
-            "name": "Country",
-            "dataType": "string",
-            "sourceColumn": "Country"
-          },
-          {
-            "name": "CountryCode",
-            "dataType": "string",
-            "sourceColumn": "CountryCode"
-          },
-          {
-            "name": "Population",
-            "dataType": "int64",
-            "sourceColumn": "Population"
-          },
-          {
-            "name": "PopulationDensity",
-            "dataType": "double",
-            "sourceColumn": "PopulationDensity"
-          },
-          {
-            "name": "MedianAge",
-            "dataType": "double",
-            "sourceColumn": "MedianAge"
-          },
-          {
-            "name": "HumanDevelopmentIndex",
-            "dataType": "double",
-            "sourceColumn": "HumanDevelopmentIndex"
-          },
-          {
-            "name": "LifeExpectancy",
-            "dataType": "double",
-            "sourceColumn": "LifeExpectancy"
-          },
-          {
-            "name": "Aged65Older",
-            "dataType": "double",
-            "sourceColumn": "Aged65Older"
-          },
-          {
-            "name": "Aged70Older",
-            "dataType": "double",
-            "sourceColumn": "Aged70Older"
-          }
         ],
-        "partitions": [
+        "measures": [
           {
-            "name": "Partition",
-            "dataView": "full",
-            "source": {
-              "type": "m",
-              "expression": [
-                "let",
-                "    Source = #\"SQL/lirkovsrv database windows net;Covid19\",",
-                "    Dim_Country = Source{[Schema=\"Dim\",Item=\"Country\"]}[Data]",
-                "in",
-                "    Dim_Country"
-              ]
-            }
+            "name": "Deaths to Population Ratio",
+            "expression": "  DIVIDE(MAX('Fact Cases'[Value]), SUM('Dimension Country'[Population]))"
           }
         ]
       },
@@ -234,12 +172,12 @@
         "name": "Fact Vaccinations",
         "columns": [
           {
-            "name": "VaccinationsKey",
+            "name": "Vaccinations Key",
             "dataType": "string",
             "sourceColumn": "VaccinationsKey"
           },
           {
-            "name": "CountryCode",
+            "name": "Country Code",
             "dataType": "string",
             "sourceColumn": "CountryCode"
           },
@@ -249,72 +187,72 @@
             "sourceColumn": "Date"
           },
           {
-            "name": "TotalVaccinations",
+            "name": "Total Vaccinations",
             "dataType": "int64",
             "sourceColumn": "TotalVaccinations"
           },
           {
-            "name": "PeopleVaccinated",
+            "name": "People Vaccinated",
             "dataType": "int64",
             "sourceColumn": "PeopleVaccinated"
           },
           {
-            "name": "PeopleFullyVaccinated",
+            "name": "People Fully Vaccinated",
             "dataType": "int64",
             "sourceColumn": "PeopleFullyVaccinated"
           },
           {
-            "name": "TotalBoosters",
+            "name": "Total Boosters",
             "dataType": "int64",
             "sourceColumn": "TotalBoosters"
           },
           {
-            "name": "DailyVaccinationsRaw",
+            "name": "Daily Vaccinations Raw",
             "dataType": "int64",
             "sourceColumn": "DailyVaccinationsRaw"
           },
           {
-            "name": "DailyVaccinations",
+            "name": "Daily Vaccinations",
             "dataType": "int64",
             "sourceColumn": "DailyVaccinations"
           },
           {
-            "name": "TotalVaccinationsPerHundred",
+            "name": "Total Vaccinations Per Hundred",
             "dataType": "double",
             "sourceColumn": "TotalVaccinationsPerHundred"
           },
           {
-            "name": "PeopleVaccinatedPerHundred",
+            "name": "People Vaccinated Per Hundred",
             "dataType": "double",
             "sourceColumn": "PeopleVaccinatedPerHundred"
           },
           {
-            "name": "PeopleFullyVaccinatedPerHundred",
+            "name": "People Fully Vaccinated Per Hundred",
             "dataType": "double",
             "sourceColumn": "PeopleFullyVaccinatedPerHundred"
           },
           {
-            "name": "TotalBustersPerHundred",
+            "name": "Total Busters Per Hundred",
             "dataType": "double",
             "sourceColumn": "TotalBustersPerHundred"
           },
           {
-            "name": "DailyVaccinationsPerMillion",
+            "name": "Daily Vaccinations Per Million",
             "dataType": "int64",
             "sourceColumn": "DailyVaccinationsPerMillion"
           },
           {
-            "name": "DailyPeopleVaccinated",
+            "name": "Daily People Vaccinated",
             "dataType": "int64",
             "sourceColumn": "DailyPeopleVaccinated"
           },
           {
-            "name": "DailyPeopleVaccinatedPerHundred",
+            "name": "Daily People Vaccinated Per Hundred",
             "dataType": "double",
             "sourceColumn": "DailyPeopleVaccinatedPerHundred"
           },
           {
-            "name": "UpdatedDate",
+            "name": "Updated Date",
             "dataType": "dateTime",
             "sourceColumn": "UpdatedDate"
           }
@@ -335,29 +273,204 @@
             }
           }
         ]
+      },
+      {
+        "name": "Dimension Country",
+        "columns": [
+          {
+            "name": "Country Id",
+            "dataType": "int64",
+            "sourceColumn": "CountryId"
+          },
+          {
+            "name": "Continent",
+            "dataType": "string",
+            "sourceColumn": "Continent"
+          },
+          {
+            "name": "Country",
+            "dataType": "string",
+            "sourceColumn": "Country"
+          },
+          {
+            "name": "Country Code",
+            "dataType": "string",
+            "sourceColumn": "CountryCode"
+          },
+          {
+            "name": "Population",
+            "dataType": "int64",
+            "sourceColumn": "Population"
+          },
+          {
+            "name": "Population Density",
+            "dataType": "double",
+            "sourceColumn": "PopulationDensity"
+          },
+          {
+            "name": "Median Age",
+            "dataType": "double",
+            "sourceColumn": "MedianAge"
+          },
+          {
+            "name": "Human Development Index",
+            "dataType": "double",
+            "sourceColumn": "HumanDevelopmentIndex"
+          },
+          {
+            "name": "Life Expectancy",
+            "dataType": "double",
+            "sourceColumn": "LifeExpectancy"
+          },
+          {
+            "name": "Aged 65 Older",
+            "dataType": "double",
+            "sourceColumn": "Aged65Older"
+          },
+          {
+            "name": "Aged 70 Older",
+            "dataType": "double",
+            "sourceColumn": "Aged70Older"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/lirkovsrv database windows net;Covid19\",",
+                "    Dimension_Country = Source{[Schema=\"Dimension\",Item=\"Country\"]}[Data]",
+                "in",
+                "    Dimension_Country"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Dimension Date",
+        "columns": [
+          {
+            "type": "calculatedTableColumn",
+            "name": "Date",
+            "dataType": "dateTime",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Date]"
+          },
+          {
+            "type": "calculated",
+            "name": "Year",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "expression": " YEAR('Dimension Date'[Date])"
+          },
+          {
+            "type": "calculated",
+            "name": "Quarter",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": " \"Q\" & QUARTER('Dimension Date'[Date])"
+          },
+          {
+            "type": "calculated",
+            "name": "Month Of Year",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "expression": " MONTH('Dimension Date'[Date])"
+          },
+          {
+            "type": "calculated",
+            "name": "Month Name",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": " FORMAT('Dimension Date'[Date], \"mmmm\")"
+          },
+          {
+            "type": "calculated",
+            "name": "Week Of Year",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "expression": " WEEKNUM('Dimension Date'[Date])"
+          },
+          {
+            "type": "calculated",
+            "name": "Day Of Month",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "expression": " DAY('Dimension Date'[Date])"
+          },
+          {
+            "type": "calculated",
+            "name": "Day Of Week (Name)",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": " FORMAT('Dimension Date'[Date], \"dddd\")"
+          },
+          {
+            "type": "calculated",
+            "name": "Day Of Week (Number)",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "expression": " WEEKDAY('Dimension Date'[Date])"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CalculatedTable 1",
+            "source": {
+              "type": "calculated",
+              "expression": "CALENDARAUTO(12)"
+            }
+          }
+        ]
       }
     ],
     "relationships": [
       {
-        "name": "21afcfb5-064b-49b0-ae60-059add9ca002",
-        "fromTable": "Fact Deaths",
-        "fromColumn": "CountryCode",
-        "toTable": "Dim Country",
-        "toColumn": "CountryCode"
-      },
-      {
-        "name": "b3438b56-7ccd-45a8-8a2e-e5801a7f8447",
+        "name": "f60ece67-db97-4c32-8598-01129a3661fd",
         "fromTable": "Fact Cases",
-        "fromColumn": "CountryCode",
-        "toTable": "Dim Country",
-        "toColumn": "CountryCode"
+        "fromColumn": "Country Code",
+        "toTable": "Dimension Country",
+        "toColumn": "Country Code"
       },
       {
-        "name": "933e811e-a9e9-45c6-9b33-e507065c5944",
+        "name": "55bd9dd7-a96d-4310-a03e-7fcecc36d171",
+        "fromTable": "Fact Deaths",
+        "fromColumn": "Country Code",
+        "toTable": "Dimension Country",
+        "toColumn": "Country Code"
+      },
+      {
+        "name": "c068c791-d844-4acd-ba4b-4256a150a501",
         "fromTable": "Fact Vaccinations",
-        "fromColumn": "CountryCode",
-        "toTable": "Dim Country",
-        "toColumn": "CountryCode"
+        "fromColumn": "Country Code",
+        "toTable": "Dimension Country",
+        "toColumn": "Country Code"
+      },
+      {
+        "name": "893a4a34-9a82-446d-89ed-cfaed692ec8c",
+        "fromTable": "Fact Vaccinations",
+        "fromColumn": "Date",
+        "toTable": "Dimension Date",
+        "toColumn": "Date"
+      },
+      {
+        "name": "6acad4c9-fdfc-452d-8898-277df86f47d2",
+        "fromTable": "Fact Deaths",
+        "fromColumn": "Date",
+        "toTable": "Dimension Date",
+        "toColumn": "Date"
+      },
+      {
+        "name": "a5bca70e-23af-4e48-901f-2fd705a5e440",
+        "fromTable": "Fact Cases",
+        "fromColumn": "Date",
+        "toTable": "Dimension Date",
+        "toColumn": "Date"
       }
     ],
     "annotations": [
