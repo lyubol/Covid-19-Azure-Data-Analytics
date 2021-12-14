@@ -352,6 +352,7 @@
       },
       {
         "name": "Dimension Date",
+        "dataCategory": "Time",
         "columns": [
           {
             "type": "calculatedTableColumn",
@@ -359,6 +360,7 @@
             "dataType": "dateTime",
             "isNameInferred": true,
             "isDataTypeInferred": true,
+            "isKey": true,
             "sourceColumn": "[Date]"
           },
           {
