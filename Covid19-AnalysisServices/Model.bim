@@ -164,7 +164,7 @@
         "measures": [
           {
             "name": "Deaths to Population Ratio",
-            "expression": "  DIVIDE(MAX('Fact Cases'[Value]), SUM('Dimension Country'[Population]))"
+            "expression": "  DIVIDE(MAX('Fact Deaths'[Value]), SUM('Dimension Country'[Population]))"
           }
         ]
       },
