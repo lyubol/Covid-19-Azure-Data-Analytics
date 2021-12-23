@@ -1,0 +1,15 @@
+{
+	"name": "lirkovdb",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "lirkovdb",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Test"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	}
+}
