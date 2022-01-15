@@ -1,0 +1,31 @@
+{
+	"name": "BIMS_parquet",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "adlslirkov",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"Directory": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "BaggageDNA"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": {
+					"value": "@dataset().Directory",
+					"type": "Expression"
+				},
+				"fileSystem": "hudl-layers"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}
