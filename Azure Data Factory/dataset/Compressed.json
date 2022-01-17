@@ -17,7 +17,7 @@
 				"folderPath": "level_1/10012022",
 				"fileSystem": "compressed"
 			},
-			"columnDelimiter": "||",
+			"columnDelimiter": "~||~",
 			"compressionCodec": "gzip",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
