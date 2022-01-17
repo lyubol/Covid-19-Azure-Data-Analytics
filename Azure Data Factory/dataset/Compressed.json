@@ -1,0 +1,31 @@
+{
+	"name": "Compressed",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "adlslirkov",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "BaggageDNA"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "adr_blds_itemacquisition_20200301.csv.gz",
+				"folderPath": "level_1/10012022",
+				"fileSystem": "compressed"
+			},
+			"columnDelimiter": "~||~",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"type": "String"
+			}
+		]
+	}
+}
