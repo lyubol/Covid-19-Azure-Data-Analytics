@@ -18,7 +18,8 @@
 				"fileSystem": "compressed"
 			},
 			"columnDelimiter": "||",
-			"escapeChar": "~",
+			"compressionCodec": "gzip",
+			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
