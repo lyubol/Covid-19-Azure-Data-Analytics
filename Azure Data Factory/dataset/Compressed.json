@@ -18,7 +18,7 @@
 				"fileSystem": "compressed"
 			},
 			"columnDelimiter": "||",
-			"escapeChar": "\\",
+			"escapeChar": "~",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
