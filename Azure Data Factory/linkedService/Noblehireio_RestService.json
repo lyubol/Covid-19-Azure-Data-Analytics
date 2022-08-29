@@ -1,0 +1,12 @@
+{
+	"name": "Noblehireio_RestService",
+	"properties": {
+		"annotations": [],
+		"type": "RestService",
+		"typeProperties": {
+			"url": "https://prod-noblehire-api-000001.appspot.com/job?",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		}
+	}
+}
