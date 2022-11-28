@@ -1,0 +1,20 @@
+{
+	"name": "Http_Source",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "HttpServer_EPMFCC",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
