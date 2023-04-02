@@ -1,0 +1,13 @@
+{
+	"name": "lirkov_function_app",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureFunction",
+		"typeProperties": {
+			"functionAppUrl": "https://lirkov-function-app.azurewebsites.net",
+			"authentication": "Anonymous",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDREQTNFODU5LURERUYtNEE1Mi1BODJCLTQ4QTRGMzM4QjA2NV9iZjFhMWY2MS0xZTE4LTQ1YTktOThjMi1lZTQ2ODk5MDIzNWQiDQp9"
+		}
+	}
+}
