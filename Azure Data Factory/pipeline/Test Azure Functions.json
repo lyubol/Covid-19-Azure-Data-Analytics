@@ -1,0 +1,53 @@
+{
+	"name": "Test Azure Functions",
+	"properties": {
+		"activities": [
+			{
+				"name": "Web1",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://lirkov-function-app.azurewebsites.net/api/HttpTrigger1",
+					"method": "POST",
+					"body": {
+						"value": "ADF execution 1"
+					}
+				}
+			},
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Web1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "AzureFunctionOutput",
+					"value": {
+						"value": "@activity('Web1').output.Success",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"variables": {
+			"AzureFunctionOutput": {
+				"type": "String"
+			}
+		},
+		"annotations": []
+	}
+}
