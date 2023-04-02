@@ -1,0 +1,126 @@
+{
+	"name": "SpotifyAPI",
+	"properties": {
+		"activities": [
+			{
+				"name": "Execute GenerateSpotifyAPIAccessToken",
+				"type": "AzureFunctionActivity",
+				"dependsOn": [
+					{
+						"activity": "Obtain Token",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.00:02:00",
+					"retry": 3,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"functionName": "GenerateSpotifyAPIAccessToken",
+					"method": "GET",
+					"headers": {
+						"client_id": {
+							"value": "@activity('Obtain Spotify Client Id KeyVault').output.value",
+							"type": "Expression"
+						},
+						"client_secret": {
+							"value": "@activity('Obtain Spotify Client Secret KeyVault').output.value",
+							"type": "Expression"
+						}
+					},
+					"body": {
+						"value": "@concat(\n    '{',\n    '\"client_id\": ',\n    activity('Obtain Spotify Client Id KeyVault').output.value,\n    ', \"client_secret\": ',\n    activity('Obtain Spotify Client Secret KeyVault').output.value\n    )",
+						"type": "Expression"
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "lirkov_function_app",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Obtain Spotify Client Id KeyVault",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.00:02:00",
+					"retry": 3,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://lirkov-keyvault.vault.azure.net/secrets/SpotifyClientID/0ddc4b00dc334a7b8e958769a1595193?api-version=7.0",
+					"method": "GET",
+					"authentication": {
+						"type": "MSI",
+						"resource": "https://vault.azure.net"
+					}
+				}
+			},
+			{
+				"name": "Obtain Spotify Client Secret KeyVault",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "Obtain Spotify Client Id KeyVault",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.00:02:00",
+					"retry": 3,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://lirkov-keyvault.vault.azure.net/secrets/SpotifyClientSecret/61ecaed2c6a849738e56f9c5f358f241?api-version=7.0",
+					"method": "GET",
+					"authentication": {
+						"type": "MSI",
+						"resource": "https://vault.azure.net"
+					}
+				}
+			},
+			{
+				"name": "Obtain Token",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "Obtain Spotify Client Secret KeyVault",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": {
+						"value": "@concat(\n    'https://lirkov-function-app.azurewebsites.net/api/GenerateSpotifyAPIAccessToken/?client_id=',\n    activity('Obtain Spotify Client Id KeyVault').output.value,\n    '&client_secret=', \n    activity('Obtain Spotify Client Secret KeyVault').output.value\n    )",
+						"type": "Expression"
+					},
+					"method": "GET"
+				}
+			}
+		],
+		"annotations": []
+	}
+}
